@@ -10,6 +10,7 @@ import { query } from "express-validator";
 import { supportedCoins } from "./src/configs/coins.js";
 import { stats } from "./src/controllers/stats.js";
 import validateResult from "./src/middlewares/validate-result.js";
+import { deviation } from "./src/controllers/deviation.js";
 
 // Setup axios request params
 axios.defaults.timeout = 30 * 1000; // 30sec
@@ -40,12 +41,19 @@ if(!DISABLE_FETCH_AND_STORE_COIN_STATS_JOB ){
 const app = express();
 app.use(express.json());
 app.get('/health', health);
-app.post('/stats', 
+app.get('/stats', 
    query('coin')
       .isIn(supportedCoins)
       .withMessage(`Coin must be one of: ${supportedCoins.join(', ')}`),
    validateResult,
    stats,
+);
+app.get('/deviation',
+   query('coin')
+      .isIn(supportedCoins)
+      .withMessage(`Coin must be one of: ${supportedCoins.join(', ')}`),
+   validateResult,
+   deviation
 );
 
 
