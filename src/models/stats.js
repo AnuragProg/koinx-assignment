@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { supportedCoins } from "../configs/coins.js";
 
-const statsSchema = new mongoose.Schema({
+const coinStatsSchema = new mongoose.Schema({
    coinId: {
       type: String,
       required: true,
@@ -25,6 +25,6 @@ const statsSchema = new mongoose.Schema({
    },
 }, {timestamps: false});
 
-statsSchema.index({createdAt: -1});
+coinStatsSchema.index({coinId: 1, createdAt: -1});
 
-export default mongoose.model('coin_stats', statsSchema);
+export default mongoose.model('coin_stats', coinStatsSchema);

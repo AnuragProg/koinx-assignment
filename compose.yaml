@@ -14,6 +14,7 @@ services:
       - API_PORT=3000
       - COIN_GECKO_API_KEY=
       - MONGO_URI=mongodb://mongo:27017/koinx_assignment
+      - DISABLE_FETCH_AND_STORE_COIN_STATS_JOB=true
     depends_on:
       - mongo
 
