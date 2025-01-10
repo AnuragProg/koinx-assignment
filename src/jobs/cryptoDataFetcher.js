@@ -2,7 +2,7 @@ import axios from "axios";
 import { supportedCoins } from "../configs/coins.js";
 import { getCoinGeckoCoinDataURL } from "../configs/coin_gecko.js";
 import { COIN_GECKO_API_KEY } from "../configs/env.js";
-import statsModel from "../models/stats.js";
+import coinStatsModel from "../models/stats.js";
 
 
 async function fetchAndStoreCoinStats(){
@@ -24,7 +24,7 @@ async function fetchAndStoreCoinStats(){
       })
    );
 
-   await statsModel.bulkWrite(coinStats.map(stat=>{
+   await coinStatsModel.bulkWrite(coinStats.map(stat=>{
       return {
          insertOne: {
             document: stat,
