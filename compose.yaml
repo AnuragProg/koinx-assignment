@@ -1,6 +1,22 @@
 
 
 services:
+  app:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - default
+    environment:
+      - API_PORT=3000
+      - COIN_GECKO_API_KEY=
+      - MONGO_URI=mongodb://mongo:27017/koinx_assignment
+    depends_on:
+      - mongo
+
   mongo:
     restart: unless-stopped
     image: mongo:8.0.0
