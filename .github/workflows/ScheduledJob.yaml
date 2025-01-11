@@ -1,0 +1,21 @@
+name: ScheduledJobs
+
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+
+
+jobs: 
+  cron_job:
+    name: Fetch and Store crypto data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger crypto coin fetch and store op
+        shell: bash
+        run: |
+          BASE_URL=${{secrets.BASE_URL}}
+          API_KEY=${{secrets.API_KEY}}
+          response=$(curl -s -H "X-Api-Key: $API_KEY" "$BASE_URL/sync")
+          echo "Response: $response"
