@@ -5,7 +5,7 @@ async function stats(req, res){
    const {coin} = req.query;
    const coinStat = await coinStatsModel.findOne({coinId: coin}).sort({createdAt: -1});
    if (coinStat) {
-      res.status(200).json({
+      return res.status(200).json({
          price: coinStat.currentPrice,
          marketCap: coinStat.marketCap,
          "24hChange": coinStat["24hChange"]
