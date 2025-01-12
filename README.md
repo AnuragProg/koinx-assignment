@@ -10,7 +10,7 @@ A server-side application built with **Node.js** and **MongoDB** to fetch, store
 - [x] **API Endpoints**:
   - `/stats`: Returns the latest data for a requested cryptocurrency.
   - `/deviation`: Returns the standard deviation of the price for the last 100 records.
-[-](-) [x] **Deployment**: Hosted on [Render](https://render.com/) with public API access.
+- [x] **Deployment**: Hosted on [Render](https://render.com/) with public API access.
 - [x] **Database**: MongoDB Atlas for production-grade data storage.
 - [x] **Code Quality**: Clean and modular codebase
 - [x] **Version Control**: Git with meaningful commit messages.
@@ -26,7 +26,7 @@ A server-side application built with **Node.js** and **MongoDB** to fetch, store
 
 ## **Background Job**
 - Fetches data from CoinGecko API every 2 hours.
-[-](-) Stores the data in MongoDB.
+- Stores the data in MongoDB.
 
 ---
 
